@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {ShoppingListService} from "./shopping-list/shopping-list.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  providers:[ShoppingListService]
 })
 export class AppComponent {
-  title = 'shopping-app';
+
+  currentPage: number=1;
+
+  onPageChangeFired($event: number) {
+    this.currentPage=$event;
+  }
 }

@@ -1,0 +1,29 @@
+@media (min-width:100px){
+  .vr {
+    visibility: hidden !important;
+  }
+  #recipe-details{
+    order: 0;
+  }
+  #reipe-list{
+    order: 2;
+  }
+}
+
+@media(min-width:768px){
+  .vr {
+    visibility: visible !important;
+  }
+  #vr{
+    order: 1;
+  }
+  #recipe-details{
+    order: 2;
+  }
+  #reipe-list{
+    order: 0;
+  }
+}
+
+
+

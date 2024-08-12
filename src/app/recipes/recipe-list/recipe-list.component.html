@@ -1,0 +1,17 @@
+<div class="row pt-3 pb-1 mb-1">
+  <div class="col-xs-12">
+    <button type="button" class="btn btn-success">New Recipe</button>
+  </div>
+</div>
+<div class="list-group">
+  @for (recipe of this.recipeService.getRecipes(); track recipe) {
+    <app-recipe-item (click)="this.recipeService.selectedRecipe=recipe; this.recipeService.seletionEmitter.emit(recipe)" [recipeEl]="recipe"></app-recipe-item>
+  } @empty {
+    <li class="list-group-item"> There are no items.</li>
+  }
+</div>
+<!--<app-recipe-item></app-recipe-item>-->
+
+
+
+
