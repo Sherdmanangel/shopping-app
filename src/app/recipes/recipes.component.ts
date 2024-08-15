@@ -12,7 +12,7 @@ import {ShoppingListService} from "../shopping-list/shopping-list.service";
 export class RecipesComponent{
   selectedRecipe: Recipe;
 
-  constructor(private recipeService:RecipeService,private shoppingListService: ShoppingListService) {
+  constructor(private recipeService:RecipeService) {
     this.selectedRecipe = this.recipeService.selectedRecipe;
   }
 }

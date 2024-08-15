@@ -1,27 +1,27 @@
 <nav class="navbar sticky-top navbar-expand bg-primary p-2" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Recipe Book</a>
+    <a class="navbar-brand" [routerLink]="'recipes'">Recipe Book</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active':(currentPage==1)}"
-             (click)="currentPageChange(1)"
-             aria-current="page" href="#">Recipes</a>
+          <a class="nav-link"
+             routerLink="recipes"
+             [routerLinkActive]="'active'"
+          >Recipes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active':(currentPage==2)}"
-             (click)="currentPageChange(2)"
-             href="#">Shopping List</a>
+          <a class="nav-link"
+             routerLink="shopping-list"
+             [routerLinkActive]="'active'">Shopping List</a>
         </li>
 
       </ul>
 
       <div class="dropdown" appDropdown #r="appDropdown">
-        <a class="dropdown-toggle pe-0 nav-link"
-           href="#" role="button">
+        <a class="dropdown-toggle pe-0 nav-link" role="button">
           Manage
         </a>
         <ul class="dropdown-menu py-0" style="right: -15px;--bs-dropdown-min-width: 0rem;" [ngClass]="{'show':r.isOpen}">

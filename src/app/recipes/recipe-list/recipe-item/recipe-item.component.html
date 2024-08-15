@@ -1,6 +1,8 @@
-<a href="#"
-   class="list-group-item list-group-item-action me-auto p-0" [ngClass]="{'active':this.recipeService.selectedRecipe==recipe}"
+<a
+   class="list-group-item list-group-item-action me-auto p-0"
    style=" max-height: 5rem "
+   [routerLink]="['/recipes',recipe.id]"
+   [routerLinkActive]="'active'"
 >
   <div class="card-body p-0 shadow-sm">
     <div class="d-flex p-0">
@@ -11,7 +13,7 @@
       <img
         src="{{recipe.image}}"
         alt=""
-        style="width: 4.5rem; height: 4.5rem;"
+        style="width: 6rem; height: 4.5rem;"
         class="rounded mb-auto mt-auto p-1"
       />
     </div>

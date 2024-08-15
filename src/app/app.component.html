@@ -1,21 +1,9 @@
-<app-header (changePageEmitter)="onPageChangeFired($event)" ></app-header>
+<app-header></app-header>
 
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div class="row pt-1">
-      @switch (currentPage){
-        @case (1){
-            <app-recipes></app-recipes>
-        }
-        @case (2){
-            <app-shopping-list></app-shopping-list>
-        }
-      }
+    <div class="col-md-12">
+      <div class="row pt-2 m-auto">
+        <router-outlet></router-outlet>
       </div>
-
     </div>
-  </div>
-</div>
 
 
