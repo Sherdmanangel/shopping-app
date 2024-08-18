@@ -18,6 +18,9 @@ import {AppRoutingModule} from "./app-routing.module";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import {RecipeService} from "./recipes/recipe.service";
+import {ShoppingListService} from "./shopping-list/shopping-list.service";
+import {provideHttpClient, withFetch} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -41,7 +44,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     NgOptimizedImage,
     AppRoutingModule
   ],
-  providers: [AppRoutingModule],
+  providers: [AppRoutingModule,RecipeService,ShoppingListService, provideHttpClient(withFetch())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

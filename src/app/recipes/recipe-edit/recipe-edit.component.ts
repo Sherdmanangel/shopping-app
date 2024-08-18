@@ -12,7 +12,7 @@ import {Ingredient} from "../../shared/ingredient.model";
 })
 export class RecipeEditComponent implements OnInit {
 
-  id: number;
+  id: string;
   editMode = false;
   currentRecipe: Recipe;
   formRecipe: FormGroup;
@@ -34,7 +34,7 @@ export class RecipeEditComponent implements OnInit {
     })
 
     this.activedRoute.params.subscribe(params => {
-      this.id = +params['id']
+      this.id = params['id']
       this.editMode = params['id'] != null;
 
       if (this.editMode) {
@@ -68,20 +68,30 @@ export class RecipeEditComponent implements OnInit {
   addRecipe() {
     console.log(this.formRecipe)
     console.log(this.formIngredients)
-      console.log(new Recipe(1,
+
+      // this.router.navigate(['recipes/'+this.recipeService.updateRecipe(this.recipeService.getIndexOf(this.currentRecipe),
+      //   new Recipe(undefined,
+      //     this.formRecipe.value['recipeName'].trim(),
+      //     this.formRecipe.value['recipeDescription'].trim(),
+      //     this.formRecipe.value['recipeImage'].trim(),
+      //     <Ingredient[]>this.formRecipe.value['ingredients']
+      //   ),this.editMode
+      // )]);
+    if (this.editMode) {
+
+    }else {
+      this.recipeService.appendRecipe(new Recipe(
+        undefined,
         this.formRecipe.value['recipeName'].trim(),
         this.formRecipe.value['recipeDescription'].trim(),
         this.formRecipe.value['recipeImage'].trim(),
-        <Ingredient[]>this.formRecipe.value['ingredients'],
-      ))
-      this.router.navigate(['recipes/'+this.recipeService.updateRecipe(this.recipeService.getIndexOf(this.currentRecipe),
-        new Recipe(1,
-          this.formRecipe.value['recipeName'].trim(),
-          this.formRecipe.value['recipeDescription'].trim(),
-          this.formRecipe.value['recipeImage'].trim(),
-          <Ingredient[]>this.formRecipe.value['ingredients']
-        ),this.editMode
-      )]);
+        <Ingredient[]>this.formRecipe.value['ingredients']))
+
+          .subscribe(value => {
+            console.log(value['name'])
+            this.router.navigate(['recipes/'+ value['name']]);
+      })
+    }
   }
 
   onDeleteRecipeIngredient(i: number) {

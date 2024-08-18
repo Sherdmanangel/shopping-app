@@ -25,8 +25,8 @@
           Manage
         </a>
         <ul class="dropdown-menu py-0" style="right: -15px;--bs-dropdown-min-width: 0rem;" [ngClass]="{'show':r.isOpen}">
-          <li><a class="dropdown-item rounded-top-1" href="#">Save Data</a></li>
-          <li><a class="dropdown-item rounded-bottom-1" href="#">Fetch Data</a></li>
+          <li><a class="dropdown-item rounded-top-1" (click)="onPostData()">Save Data</a></li>
+          <li><a class="dropdown-item rounded-bottom-1" (click)="onGetData()">Fetch Data</a></li>
         </ul>
       </div>
     </div>

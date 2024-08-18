@@ -19,8 +19,12 @@
     <label class="form-label">Recipe Image (Url/base64)</label>
   <div class="input-group mb-3">
     <input type="text" class="form-control"
-           formControlName="recipeImage">
+           formControlName="recipeImage" #ImagePath>
     <button class="btn btn-primary col-2" type="button" (click)="onClearImage()">Clear</button>
+  </div>
+  <div class="mb-3 d-flex justify-content-center">
+    <img [src]="ImagePath.value.trim()" class="img-fluid" style="max-width: 16.0rem">
+
   </div>
 
   <div class="mb-3">
@@ -30,12 +34,11 @@
     ></textarea>
   </div>
   <label class="form-label mb">Ingredient (s)</label>
-  <div [formGroup]="arrayGroupIngredients">
 
 
   @for (form of formIngredients; track form; let i = $index) {
 
-    <div class="input-group mb-3 row g-0" [formGroup]="formIngredients[i]">
+    <div class="input-group mb-1 row g-0" [formGroup]="formIngredients[i]">
       <input type="text" class="form-control col-8" formControlName="name">
       <input type="number" class="form-control text-center col-2" style="flex: none;width: 4.0rem"
              formControlName="amount"
@@ -44,7 +47,6 @@
       <button class="btn btn-danger col-2" type="button" (click)="onDeleteRecipeIngredient(i)">Delete</button>
     </div>
   }
-  </div>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center mt-1">
     <button class="btn btn-outline-success" type="button" (click)="addIngredient()">+</button></div>
 </form>

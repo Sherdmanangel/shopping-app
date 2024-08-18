@@ -51,4 +51,8 @@ export class ShoppingListService {
 
     this.ingredientAddedEmitter.next(this.ingredients)
   }
+
+  setIngredients(ingredients: Ingredient[]) {
+    this.ingredients=ingredients;
+  }
 }
