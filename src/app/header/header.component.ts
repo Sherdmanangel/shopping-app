@@ -11,7 +11,7 @@ export class HeaderComponent {
   constructor(private htppClientService:AppHttpClientService,private recipeService:RecipeService, private shoppingListService:ShoppingListService ) {}
 
   onPostData() {
-    this.htppClientService.postRecipes(this.recipeService.getRecipes());
+    //this.htppClientService.postRecipes(this.recipeService.getRecipes());
     this.htppClientService.postIngredientsAdded(this.shoppingListService.getIngredients());
   }
 

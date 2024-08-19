@@ -21,6 +21,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import {RecipeService} from "./recipes/recipe.service";
 import {ShoppingListService} from "./shopping-list/shopping-list.service";
 import {provideHttpClient, withFetch} from "@angular/common/http";
+import { NavExpandDirective } from './shared/nav-expand.directive';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {provideHttpClient, withFetch} from "@angular/common/http";
     NotFoundComponent,
     RecipeStartComponent,
     RecipeEditComponent,
+    NavExpandDirective,
   ],
   imports: [
     BrowserModule,
