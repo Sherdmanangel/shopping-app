@@ -1,34 +1,72 @@
-<nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="'recipes'">Recipe Book</a>
+<nav class="navbar sticky-top navbar-expand-sm bg-body-tertiary mb-3"
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     data-bs-theme="dark">
+  <div class="container-fluid">
+    <div class="justify-content-start position-relative">
+      <a class="navbar-brand me-1 " [routerLink]="'recipes'">Recipe Book
+
+      </a>
+      @if (isAuthenticated){
+        <a class="position-absolute
+        top-20 start-100 translate-middle badge
+        text-bg-secondary rounded-pill bg-success text-decoration-none"
+           style="font-size: xx-small">
+          Authenticated
+        </a>
+      } @else {
+        <a class="position-absolute
+        top-20 start-100 translate-middle badge
+        text-bg-secondary rounded-pill bg-danger text-decoration-none"
+           style="font-size: xx-small"
+           [routerLink]="'login'">
+          Unauthenticated
+        </a>
+      }
+
+      <span class="badge bg-danger "></span>
+
+    </div>
+
+    <button class="navbar-toggler"
+            (click)="isMenuCollapsed = !isMenuCollapsed"
+            type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link"
-             routerLink="recipes"
-             [routerLinkActive]="'active'"
-          >Recipes</a>
+        @if(isAuthenticated){
+            <a class="nav-link"
+               routerLink="recipes"
+               [routerLinkActive]="'active'"
+               (click)="isMenuCollapsed = true"
+            >Recipes</a>
+        } @else {
+            <a class="nav-link"
+               routerLink="auth"
+               [routerLinkActive]="'auth'"
+               (click)="isMenuCollapsed = true"
+            >Auth</a>
+        }
         </li>
         <li class="nav-item">
           <a class="nav-link"
              routerLink="shopping-list"
-             [routerLinkActive]="'active'">Shopping List</a>
+             [routerLinkActive]="'active'"
+             (click)="isMenuCollapsed = true"
+          >Shopping List</a>
         </li>
       </ul>
 
-      <div class="dropdown" appDropdown #r="appDropdown">
-        <a class="dropdown-toggle pe-0 nav-link" role="button">
+      <div class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+        <a  class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown" role="button">
           Manage
         </a>
-        <ul class="dropdown-menu py-0" style="right: -15px;--bs-dropdown-min-width: 0rem;" [ngClass]="{'show':r.isOpen}">
-          <li><a class="dropdown-item rounded-top-1" (click)="onPostData()">Save Data</a></li>
-          <li><a class="dropdown-item rounded-bottom-1" (click)="onGetData()">Fetch Data</a></li>
-        </ul>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdown" class="dropdown-menu">
+          <a ngbDropdownItem  (click)="onPostData()">Save Data</a>
+          <a ngbDropdownItem (click)="onGetData()">Fetch Data</a>
+        </div>
       </div>
     </div>
   </div>

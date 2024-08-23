@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="list-group">
-  @for (recipe of this.recipeService.getRecipes(); track recipe.id) {
+  @for (recipe of recipes; track recipe.id) {
     <app-recipe-item [recipeEl]="recipe"></app-recipe-item>
   } @empty {
     <li class="list-group-item"> There are no items.</li>

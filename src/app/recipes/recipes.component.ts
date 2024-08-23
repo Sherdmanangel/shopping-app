@@ -1,17 +1,20 @@
-import {Component} from '@angular/core';
-import {Recipe} from "./recipe.model";
-import {RecipeService} from "./recipe.service";
-import {HttpClient} from "@angular/common/http";
+import {Component, OnInit} from '@angular/core';
+import {StorageService} from "../shared/storage.service";
 
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css',
 })
-export class RecipesComponent{
-  selectedRecipe: Recipe;
+export class RecipesComponent implements OnInit{
 
-  constructor(private recipeService:RecipeService) {
-    this.selectedRecipe = this.recipeService.selectedRecipe;
+  constructor(private storageService: StorageService) {
+
+  }
+
+  ngOnInit(): void {
+    if(this.storageService.recipeSubject.value.length == 0){
+      this.storageService.fetch()
+    }
   }
 }

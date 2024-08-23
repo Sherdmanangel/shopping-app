@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShoppingListService} from "./shopping-list/shopping-list.service";
+import {AuthService} from "./auth/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,13 @@ import {ShoppingListService} from "./shopping-list/shopping-list.service";
   styleUrl: './app.component.css',
   providers:[ShoppingListService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
-  currentPage: number=1;
+  constructor(private auth: AuthService) {}
 
-  onPageChangeFired($event: number) {
-    this.currentPage=$event;
+  ngOnInit(): void {
+
+    this.auth.autoLogin();
+
   }
 }

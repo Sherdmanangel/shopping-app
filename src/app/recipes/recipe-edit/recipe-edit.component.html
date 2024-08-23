@@ -10,8 +10,8 @@
     <label class="form-label">Recipe Name</label>
     <input type="text" class="form-control"
       formControlName="recipeName">
-    @if(formRecipe.get('recipeName').invalid && formRecipe.get('recipeName').dirty){
-      <div class="form-text">Invalid Recipe Name</div>
+    @if(formRecipe.get('recipeName').invalid && formRecipe.get('recipeName').dirty && !formRecipe.get('recipeName').untouched){
+      <div class="form-text" style="color: rgb(220, 53, 69)">Invalid Recipe Name!</div>
     }
   </div>
 

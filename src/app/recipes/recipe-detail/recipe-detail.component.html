@@ -10,29 +10,37 @@
     <h1>{{recipe.name}}</h1>
   </div>
 </div>
-<div class="row">
-    <div class="dropdown" appDropdown #r="appDropdown" >
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" >
-        Manage</button>
-      <ul class="dropdown-menu" [ngClass]="{'show':r.isOpen}" >
-        <li><a class="dropdown-item"
-               style="cursor: pointer"
-               (click)="onAddToShoppingList()"
-        >To Shopping List</a></li>
-        <li><a class="dropdown-item"
-               [routerLink]="['edit']"
-        >Edit Recipe</a></li>
-        <li><a class="dropdown-item" (click)="onDeleteRecipe()">Delete Recipe</a></li>
-      </ul>
+  <div class="row">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button type="button" class="btn btn-primary"
+                ngbDropdownToggle id="navbarDropdown" role="button">
+          Manage
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic">
+          <button ngbDropdownItem
+                  style="cursor: pointer"
+                  (click)="onAddToShoppingList()"
+          >To Shopping List
+          </button>
+          <button ngbDropdownItem
+                  [routerLink]="['edit']"
+          >Edit Recipe
+          </button>
+          <button ngbDropdownItem
+                  (click)="onDeleteRecipe()">Delete Recipe
+          </button>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 <div class="row">
   <div class="col-xs-12">
     {{recipe.description}}
   </div>
 </div>
 <div class="row mt-2">
-  <div class="col-xs-12" appDropdown>
+  <div class="col-xs-12">
     Ingrediente(s):
     <ul class="list-group mt-1">
       @for (ingredient of recipe.ingredients; track ingredient.name) {
