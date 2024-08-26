@@ -6,8 +6,6 @@ import { HeaderComponent} from "./header/header.component";
 
 
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import {NgOptimizedImage} from "@angular/common";
 import {AppRoutingModule} from "./app-routing.module";
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -22,8 +20,6 @@ import {RecipesModule} from "./recipes/recipes.module";
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     NotFoundComponent,
     AuthComponent,
   ],

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Recipe} from "./recipe.model";
-import {Ingredient} from "./ingredient.model";
-import {exhaustAll, map, Observable, tap} from "rxjs";
+import {Observable} from "rxjs";
 
 export interface RecipeData {
   id: string;
